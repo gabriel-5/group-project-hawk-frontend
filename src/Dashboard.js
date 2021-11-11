@@ -3,8 +3,8 @@ import React, { useState, useEffect } from "react";
 import Add from "./Add";
 import Button from "react-bootstrap/Button";
 import moment from "moment";
-import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
-import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
+import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
+import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 
 function Dashboard(props) {
   const [quotes, cQuotes] = useState([]);
@@ -38,6 +38,7 @@ function Dashboard(props) {
 
           {/* moment().format('MMMM Do YYYY, h:mm:ss a') */}
           <td>{moment(current.date).format("MMMM Do YYYY, h:mm:ss a")}</td>
+          <td>test</td>
           <td>
             <Button onClick={() => removeQuote(current._id)} variant="danger">
               Remove
@@ -59,6 +60,16 @@ function Dashboard(props) {
   return (
     <>
       <br />
+
+      <Add
+        client={props.client}
+        refreshList={() => {
+          refreshList();
+          cCurrent(undefined);
+        }}
+        currentQuote={current}
+      />
+
       <Table className="mx-4" size="sm" responsive="md" fluid>
         <thead>
           <tr>
@@ -68,20 +79,13 @@ function Dashboard(props) {
             <th>Products</th>
             <th>Cost</th>
             <th>Date</th>
+            <th>Completed?</th>
           </tr>
         </thead>
         <tbody>{buildrows()}</tbody>
       </Table>
       <br />
       <br />
-      <Add
-        client={props.client}
-        refreshList={() => {
-          refreshList();
-          cCurrent(undefined);
-        }}
-        currentQuote={current}
-      />
     </>
   );
 }
