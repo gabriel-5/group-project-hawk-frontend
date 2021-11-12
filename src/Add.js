@@ -56,46 +56,15 @@ function Add(props) {
       </div>
       <br />
       <Form className="mx-4" onSubmit={(e) => submitHandler(e)} id="addForm">
-        <Row sm={4}>
+      <Row sm={4}>
           <Col>
             <Form.Group controlId="rooms">
               <Form.Label>Rooms</Form.Label>
-              <Multiselect
-                displayValue="key"
-                onRemove={function noRefCheck() {}}
-                onSearch={function noRefCheck() {}}
-                onSelect={function noRefCheck() {}}
-                options={[
-                  {
-                    cat: "Group 1",
-                    key: "Option 1",
-                  },
-                  {
-                    cat: "Group 1",
-                    key: "Option 2",
-                  },
-                  {
-                    cat: "Group 1",
-                    key: "Option 3",
-                  },
-                  {
-                    cat: "Group 2",
-                    key: "Option 4",
-                  },
-                  {
-                    cat: "Group 2",
-                    key: "Option 5",
-                  },
-                  {
-                    cat: "Group 2",
-                    key: "Option 6",
-                  },
-                  {
-                    cat: "Group 2",
-                    key: "Option 7",
-                  },
-                ]}
-                showCheckbox
+              <Form.Control
+                type="text"
+                defaultValue={props.currentQuote?.rooms}
+                disabled={disabled}
+                required
               />
             </Form.Group>
           </Col>
